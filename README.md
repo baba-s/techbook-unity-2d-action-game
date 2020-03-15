@@ -2,6 +2,13 @@
 
 ![](https://github.com/baba-s/techbook-unity-project/blob/master/game.gif)
 
+## 操作方法
+
+|キー|内容|
+|:--|:--|
+|矢印キー|移動|
+|スペースキー|ジャンプ、二段ジャンプ、カベキック|
+
 ## Unity プロジェクトの入手方法
 
 1. このページの「Clone or download」ボタンから「Download ZIP」を選択する
