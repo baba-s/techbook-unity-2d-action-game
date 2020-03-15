@@ -11,6 +11,6 @@
 ## 実行ファイルの入手方法
 
 1. 下記の URL を開く  
-https://github.com/baba-s/techbook-unity-project/blob/master/Game.zip?raw=true  
+https://github.com/baba-s/techbook-unity-2d-action-game/blob/master/Game.zip?raw=true  
 2. ダウンロードした「Game.zip」を展開する
 3. 展開したフォルダ内の「proj.exe」を開く
