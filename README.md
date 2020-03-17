@@ -1,6 +1,6 @@
 # 「Unityで作る2Dアクションゲーム」の完成プロジェクト
 
-![](https://github.com/baba-s/techbook-unity-project/blob/master/game.gif)
+![](https://github.com/baba-s/techbook-unity-2d-action-game/raw/master/game.gif)
 
 ## 操作方法
 
