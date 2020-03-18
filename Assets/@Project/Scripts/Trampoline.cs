@@ -17,6 +17,12 @@ public class Trampoline : MonoBehaviour
 
 			// プレイヤーをジャンプさせる
 			motor.ForceJump( m_jumpHeight );
+
+			// トランポリンのアニメーターを取得する
+			var animator = GetComponent <Animator >();
+
+			// ジャンプする時のアニメーションを再生する
+			animator.Play( "Jump" );
 		}
 	}
 }
