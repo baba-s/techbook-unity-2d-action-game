@@ -16,6 +16,15 @@ public class Player : MonoBehaviour
 	// ジャンプした時のSEをスキップするかどうか
 	public bool IsSkipJumpSe;
 
+	//The panel appearing when the game is won
+	public GameObject winningPanel;
+	//This show the collected apples vs to total ones
+	public GameObject textApple;
+
+	//Variables used for some statistics
+	int collectedApple;
+	int totalApple = 29;//Hard-coded value. This should depend on the level total number of apples
+
 	// プレイヤーがやられた時に呼び出す関数
 	public void Dead()
 	{
@@ -45,13 +54,19 @@ public class Player : MonoBehaviour
 		// やられた時の SE を再生する
 		var audioSource = FindObjectOfType<AudioSource>();
 		audioSource.PlayOneShot( m_hitClip );
+
+		//Set collected apples to 0
+		collectedApple = 0;
+		//Disable winning panel
+		winningPanel.SetActive(false);
 	}
 
 	// リトライする時に呼び出される関数
-	private void OnRetry()
+	public void OnRetry()
 	{
 		// 現在のシーンを読み込み直してリトライする
 		SceneManager.LoadScene( SceneManager.GetActiveScene().buildIndex );
+		GetComponent<PlatformerMotor2D>().canMove = true;
 	}
 
 	// シーンが開始する時に呼び出される関数
@@ -80,5 +95,16 @@ public class Player : MonoBehaviour
 			var audioSource = FindObjectOfType<AudioSource>();
 			audioSource.PlayOneShot( m_jumpClip );
 		}
+	}
+
+
+	public void CollectApple(){
+		collectedApple++;
+	}
+	public int getCollectedApple(){
+		return collectedApple;
+	}
+	public int getTotalApple(){
+		return totalApple;
 	}
 }

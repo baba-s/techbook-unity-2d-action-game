@@ -15,6 +15,8 @@ public class Fruit : MonoBehaviour
 		// 名前に「Player」が含まれるオブジェクトと当たったら
 		if ( other.name.Contains( "Player" ) )
 		{
+			other.gameObject.GetComponent<Player>().CollectApple();
+
 			// 獲得演出のオブジェクトを作成する
 			var collected = Instantiate
 			(

@@ -1241,6 +1241,8 @@ public class PlatformerMotor2D : MonoBehaviour
 
         ladderZone = LadderZone.Bottom;
         _collisionMask = staticEnvLayerMask | movingPlatformLayerMask;
+
+        canMove = true;
     }
 
     private void OnEnable()
@@ -1624,8 +1626,11 @@ public class PlatformerMotor2D : MonoBehaviour
         SetLastJumpType();
     }
 
+    //Disable movement when game is won
+    public bool canMove;
     private void FixedUpdate()
     {
+      if(canMove){
         // Frozen?
         if (frozen || timeScale == 0)
         {
@@ -1633,7 +1638,6 @@ public class PlatformerMotor2D : MonoBehaviour
         }
 
         UpdateTimers();
-
         // update _collisionMask in case it's updated by user
         _collisionMask = staticEnvLayerMask | movingPlatformLayerMask;
 
@@ -1664,6 +1668,7 @@ public class PlatformerMotor2D : MonoBehaviour
         {
             ladderZone = LadderZone.Middle;
         }
+      }
     }
 
     private float UpdateMotor(float deltaTime)
@@ -1736,8 +1741,8 @@ public class PlatformerMotor2D : MonoBehaviour
             minDistanceFromEnv);
 
         Collider2D col = Physics2D.OverlapArea(
-            checkBounds.min, 
-            checkBounds.max, 
+            checkBounds.min,
+            checkBounds.max,
             _collisionMask);
 
         if (col != null)
@@ -1966,7 +1971,7 @@ public class PlatformerMotor2D : MonoBehaviour
         {
             //Debug.Log(IsMovingPlatform(_collidersUpAgainst[DIRECTION_DOWN].gameObject));
         }
-        
+
         if (HasFlag(CollidedSurface.Ground) && IsMovingPlatform(_collidersUpAgainst[DIRECTION_DOWN].gameObject))
         {
             _movingPlatformState.platform = _collidersUpAgainst[DIRECTION_DOWN].GetComponent<MovingPlatformMotor2D>();
