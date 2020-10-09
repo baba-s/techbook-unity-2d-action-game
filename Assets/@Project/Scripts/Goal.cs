@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+//Needed to handle Text class
+using UnityEngine.UI;
+
 // ゴールを制御するスクリプト
 public class Goal : MonoBehaviour
 {
@@ -8,6 +11,7 @@ public class Goal : MonoBehaviour
 
 	// ゴールしたかどうか
 	private bool m_isGoal;
+
 
 	// 他のオブジェクトと当たった時に呼び出される関数
 	private void OnTriggerEnter2D( Collider2D other )
@@ -36,6 +40,11 @@ public class Goal : MonoBehaviour
 				// ゴールした時の SE を再生する
 				var audioSource = FindObjectOfType<AudioSource>();
 				audioSource.PlayOneShot( m_goalClip );
+
+				Player player = other.gameObject.GetComponent<Player>();
+				player.winningPanel.SetActive(true);
+				player.textApple.GetComponent<Text>().text = player.getCollectedApple().ToString() + '/' + player.getTotalApple().ToString();
+				player.GetComponent<PlatformerMotor2D>().canMove = false;
 			}
 		}
 	}
